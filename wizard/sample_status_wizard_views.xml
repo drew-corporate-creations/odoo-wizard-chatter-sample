@@ -1,0 +1,31 @@
+<odoo>
+
+    <record id="view_sample_status" model="ir.ui.view">
+        <field name="name">Update Status</field>
+        <field name="model">sample.status.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Status">
+                <p>
+                   Selected items will have their status updated
+                </p>
+                <group>
+                    <field name="status"/>
+                </group>
+                <footer>
+                    <button name="update_statuses" string="Update" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_sample_status" model="ir.actions.act_window">
+        <field name="name">Update Statuses</field>
+        <field name="res_model">sample.status.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_sample_model"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>

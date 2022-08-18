@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+
+        <record id="sample_model_action" model="ir.actions.act_window">
+            <field name="name">Sample Model</field>
+            <field name="res_model">sample_model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sample_menu_root" name="Sample" action="sample_model_action" />
+
+        <record id="sample_model_tree" model="ir.ui.view">
+            <field name="name">Sample Model Tree</field>
+            <field name="model">sample_model</field>
+            <field name="mode">primary</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="status" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="sample_model_form" model="ir.ui.view">
+            <field name="name">Sample Form</field>
+            <field name="model">sample_model</field>
+            <field name="mode">primary</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" />
+                        <field name="status" />
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_update_name" model="ir.actions.server">
+            <field name="name">Update Names</field>
+            <field name="model_id" ref="sample.model_sample_model"/>
+            <field name="binding_model_id" ref="sample.model_sample_model"/>
+            <field name="state">code</field>
+            <field name="code">
+                action = model.update_names()
+            </field>
+        </record>
+
+    </data>
+</odoo>
